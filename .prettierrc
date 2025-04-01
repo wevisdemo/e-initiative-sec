@@ -9,7 +9,10 @@
 		"prettier-plugin-svelte",
 		"prettier-plugin-tailwindcss"
 	],
-	"tailwindAttributes": ["outerClass", "innerClass"],
+	"tailwindAttributes": [
+		"outerClass",
+		"innerClass"
+	],
 	"overrides": [
 		{
 			"files": "*.astro",
@@ -17,6 +20,11 @@
 				"parser": "astro"
 			}
 		},
-		{ "files": "*.svelte", "options": { "parser": "svelte" } }
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		}
 	]
 }

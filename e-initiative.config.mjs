@@ -30,8 +30,8 @@ export default {
 	},
 	theme: {
 		colors: {
-			primary: '#2E3283',
-			'primary-focus': '#4349BA',
+			primary: '#51F4CD',
+			'primary-focus': '#3ADBB4',
 			secondary: '#2BB25C',
 			'secondary-focus': '#35D26E',
 			accent: '#8054FF',
@@ -40,6 +40,9 @@ export default {
 			'base-100': '#FFFFFF',
 			'base-300': '#E5E6E6',
 			info: '#F8EB54',
+			red: '#FF0000',
+			'red-focus': '#E62D05',
+			gray: '#000000',
 		},
 		fonts: {
 			body: 'IBM Plex Sans Thai Looped',
@@ -53,7 +56,7 @@ export default {
 	},
 	sheets: {
 		id: '1PPl4bIKrNC68nc9sWDp7aolnTv0xiHZYQRlsvnRpAHc',
-		enableOfflineSignature: true,
+		enableOfflineSignature: false,
 		enableLocations: true,
 	},
 	renderer: {
