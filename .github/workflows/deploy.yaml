@@ -1,4 +1,4 @@
-name: Build Demo Campaign Website
+name: Build and Deploy Campaign Website
 
 on:
   push:
@@ -17,7 +17,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'demo'
+  group: 'web'
   cancel-in-progress: false
 
 jobs:
@@ -40,7 +40,6 @@ jobs:
       - name: Build with Astro
         run: npm run build
         env:
-          PUBLIC_DEMO_MODE: true # REMOVE THIS
           PUBLIC_FIREBASE_CONFIG: ${{ secrets.PUBLIC_FIREBASE_CONFIG }}
           ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
