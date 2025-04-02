@@ -14,16 +14,28 @@ export const documentsTable = Object({
 		'location',
 		asString({ minLength: 1, maxLength: MAX_LOCATION_LENGTH }),
 	),
-	citizenId: Column('citizenId', asString({ minLength: 13, maxLength: 13 })),
 	prefix: Column('prefix', asOneOf(['นาย', 'นาง', 'นางสาว'])),
 	firstname: Column('firstname', asString({ minLength: 1 })),
 	lastname: Column('lastname', asString({ minLength: 1 })),
-	signature: Column('signature', asString({ minLength: 1 })),
+});
+
+export const organizeTable = Object({
+	organizeName: Column(
+		'location',
+		asString({ minLength: 1, maxLength: MAX_LOCATION_LENGTH }),
+	),
 });
 
 export type FormDocument = StaticDecode<typeof documentsTable>;
 
+export type FormOrganize = StaticDecode<typeof organizeTable>;
+
 export interface SubmittedDocument extends FormDocument {
+	uid: string;
+	timestamp: Pick<Timestamp, 'seconds' | 'nanoseconds'>;
+}
+
+export interface SubmittedOrganize extends FormOrganize {
 	uid: string;
 	timestamp: Pick<Timestamp, 'seconds' | 'nanoseconds'>;
 }

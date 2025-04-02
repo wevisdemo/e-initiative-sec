@@ -23,9 +23,15 @@ import {
 	startAfter,
 } from 'firebase/firestore';
 import FirebaseOptions from '../../firebase.json';
-import { type FormDocument, type SubmittedDocument } from '../models/document';
+import {
+	type FormDocument,
+	type FormOrganize,
+	type SubmittedDocument,
+	type SubmittedOrganize,
+} from '../models/document';
 
 enum COLLECTION {
+	Organize = 'organizes',
 	Documents = 'documents',
 	Users = 'users',
 }
@@ -66,7 +72,6 @@ const getUser = (auth: Auth): Promise<User> => {
 
 export const submitDocument = async (document: FormDocument) => {
 	if (getEnv('PUBLIC_DEMO_MODE')) {
-		console.log(document);
 		return new Promise<void>((res) => setTimeout(res, 2000));
 	}
 
@@ -89,13 +94,46 @@ export const submitDocument = async (document: FormDocument) => {
 	return batch.commit();
 };
 
-export const countSubmittedDocuments = async (): Promise<number> => {
+export const submitOrganize = async (organize: FormOrganize) => {
+	if (getEnv('PUBLIC_DEMO_MODE')) {
+		return new Promise<void>((res) => setTimeout(res, 2000));
+	}
+
+	await signInAnonymously(auth);
+	const user = await getUser(auth);
+
+	const batch = writeBatch(firestore);
+	const ref = doc(collection(firestore, COLLECTION.Organize));
+	const userRef = doc(firestore, COLLECTION.Users, user.uid);
+
+	const submittedOrganize: Record<keyof SubmittedOrganize, unknown> = {
+		...organize,
+		uid: user.uid,
+		timestamp: serverTimestamp(),
+	};
+
+	batch.set(ref, submittedOrganize);
+	batch.set(userRef, { timestamp: serverTimestamp() }, { merge: true });
+
+	return batch.commit();
+};
+
+export const countSubmittedUsers = async (): Promise<number> => {
 	try {
 		await signInAsAdmin();
-
 		const q = query(collection(firestore, COLLECTION.Documents));
 		const snapshot = await getCountFromServer(q);
-
+		return snapshot.data().count;
+	} catch (e) {
+		console.warn(e);
+		return 0;
+	}
+};
+export const countSubmittedOrganize = async (): Promise<number> => {
+	try {
+		await signInAsAdmin();
+		const q = query(collection(firestore, COLLECTION.Organize));
+		const snapshot = await getCountFromServer(q);
 		return snapshot.data().count;
 	} catch (e) {
 		console.warn(e);
@@ -134,5 +172,5 @@ function signInAsAdmin() {
 }
 
 function getEnv(key: string) {
-	return import.meta.env?.[key] || process?.env?.[key];
+	return import.meta.env?.[key];
 }

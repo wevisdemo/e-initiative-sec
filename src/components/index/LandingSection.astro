@@ -4,98 +4,108 @@ import SectionContainer from '../SectionContainer.astro';
 import UpdateTimestamp from '../UpdateTimestamp.svelte';
 import PenIcon from '../icons/PenIcon.svelte';
 import LocationIcon from '../icons/LocationIcon.svelte';
-import TableIcon from '../icons/TableIcon.svelte';
-import { dayElapsed, isCampaignEnded } from '../../utils/campaign';
-import { countSubmittedDocuments } from '../../utils/firebase';
-import { countOfflineSignatures } from '../../utils/sheets';
+import { isCampaignEnded } from '../../utils/campaign';
+import {
+	countSubmittedUsers,
+	countSubmittedOrganize,
+} from '../../utils/firebase';
 import Sharer from '../Sharer.svelte';
 
-const documentCount =
-	(await countSubmittedDocuments()) +
-	(Config.sheets?.enableOfflineSignature ? await countOfflineSignatures() : 0);
+const userCount =
+	(await countSubmittedUsers()) + (await countSubmittedOrganize());
 ---
 
-<SectionContainer
-	outerClass="min-h-screen justify-center"
-	innerClass="flex flex-col gap-16 text-center md:flex-row"
-	hideNavbar
->
-	<div class="flex flex-col items-center justify-center">
-		<h1 class="heading-responsive-03">{Config.metadata.title}</h1>
-		<p>{Config.metadata.description}</p>
-		<img
-			class="mt-4 w-[180px] max-w-[280px] md:w-[280px]"
-			src="https://placehold.co/280x280"
-			alt=""
-		/>
-	</div>
-	<div class="my-auto flex w-full max-w-md flex-col space-y-2">
-		<p class="mt-1">
-			ต้องการ {Config.petition.expectedSignatures.toLocaleString()} รายชื่อ
-		</p>
-
-		<div class="flex flex-col gap-2">
-			<div>
-				<p class="heading-responsive-02">
-					ลงแล้ว {documentCount.toLocaleString()} คน
-				</p>
-				<p>
-					{dayElapsed > 0 && <>เหลือเวลาอีก {dayElapsed} วัน</>}
-					(ภายใน {
-						Config.petition.endDate.toLocaleDateString('TH-th', {
-							dateStyle: 'medium',
-						})
-					})
-				</p>
-			</div>
-			<UpdateTimestamp />
+<div class="relative h-full w-full">
+	<img
+		class="absolute inset-0 hidden h-full w-full object-cover md:block"
+		src="landing-bg.svg"
+		alt="landing-bg"
+	/>
+	<img
+		class="absolute inset-0 block h-full w-full scale-[1.01] object-cover md:hidden"
+		src="landing-mb.svg"
+		alt="landing-mb"
+	/>
+	<SectionContainer
+		outerClass="relative min-h-screen "
+		innerClass="flex flex-col gap-16  text-center md:flex-row"
+		hideNavbar
+	>
+		<img class="mt-4 h-[287px]" src="landing-logo.svg" alt="landing-logo" />
+		<div class="my-auto flex w-full max-w-md flex-col space-y-2">
 			{
-				isCampaignEnded ? (
+				isCampaignEnded && (
 					<div class="flex flex-row items-center gap-2">
-						<div class="h-[2px] flex-1 bg-secondary" />
-						<p class="font-bold text-secondary">ปิดรับลงชื่อแล้ว</p>
-						<div class="h-[2px] flex-1 bg-secondary" />
-					</div>
-				) : (
-					<div class="space-y-2">
-						<a
-							href="#sign"
-							class="heading-03 btn btn-primary btn-block text-base-100"
-						>
-							ลงชื่อเลย
-							<PenIcon />
-						</a>
-						{Config.sheets?.enableLocations && (
-							<a
-								href="locations"
-								class="heading-03 btn btn-secondary btn-block"
-							>
-								ดูสถานที่ลงชื่อ
-								<LocationIcon />
-							</a>
-						)}
-						{Config.petition.offline?.volunteer && (
-							<a
-								href="#volunteer"
-								class="heading-03 btn btn-secondary btn-block"
-							>
-								อาสาล่ารายชื่อ
-								<TableIcon />
-							</a>
-						)}
+						<div class="h-[2px] flex-1 bg-white" />
+						<p class="body-03 font-bold text-white">⚠️ ปิดรับลงชื่อแล้ว ⚠️</p>
+						<div class="h-[2px] flex-1 bg-white" />
 					</div>
 				)
 			}
-		</div>
+			<p class="body-03 mt-1 text-white md:text-neutral">
+				ต้องการ {Config.petition.expectedSignatures.toLocaleString()} รายชื่อ
+			</p>
 
-		<a
-			class="heading-03 btn btn-link btn-block hover:text-accent"
-			href="#volunteer">ทำไมต้องลงชื่อ</a
-		>
+			<div class="flex flex-col gap-2">
+				<div class="text-white md:text-neutral">
+					<p
+						id="singed"
+						class="heading-responsive-03 text-shadow-md font-bold text-red-600"
+						style="  -webkit-text-stroke: 8px white; paint-order: stroke fill;"
+					>
+						ลงแล้ว {userCount.toLocaleString()} ชื่อ
+					</p>
+					<p class="body-03 font-bold text-white md:text-neutral">
+						บุคคล {countSubmittedUsers()} คน / องค์กร {countSubmittedOrganize()}
+						องค์กร
+					</p>
+					<p class="body-03">
+						ภายใน {
+							Config.petition.endDate.toLocaleDateString('TH-th', {
+								dateStyle: 'long',
+							})
+						}
+					</p>
+				</div>
+				<UpdateTimestamp />
+				{
+					(
+						<div class="space-y-2">
+							{!isCampaignEnded && (
+								<a
+									href="#sign"
+									class="heading-03 btn btn-primary  btn-block  text-neutral"
+								>
+									ลงชื่อเลย
+									<PenIcon />
+								</a>
+							)}
 
-		<div class="flex items-center justify-center gap-3 text-primary">
-			<span class="body-01">แชร์</span>
-			<Sharer />
+							{Config.sheets?.enableLocations && (
+								<a
+									href="locations"
+									class="heading-03 btn btn-block border-2 border-white bg-transparent text-white md:border-neutral md:text-neutral"
+								>
+									ดูตารางกิจกรรม
+									<LocationIcon />
+								</a>
+							)}
+						</div>
+					)
+				}
+			</div>
+
+			<a
+				class="heading-03 btn btn-link btn-block text-white hover:text-accent md:text-neutral"
+				href="#volunteer">ทำไมต้องลงชื่อ</a
+			>
+
+			<div
+				class="flex items-center justify-center gap-3 text-white md:text-neutral"
+			>
+				<span class="body-01">แชร์</span>
+				<Sharer />
+			</div>
 		</div>
-	</div>
-</SectionContainer>
+	</SectionContainer>
+</div>

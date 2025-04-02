@@ -1,14 +1,14 @@
 /** @type {import('./src/models/config').EInitiativeConfig} */
 export default {
 	metadata: {
-		title: 'E-Initiative Template',
-		description: 'Customizable template for Thailand E-initiative',
+		title: 'Stop SEC ACT. And Land Bridge',
+		description: 'หยุดกฎหมายพิเศษ เพื่อคนพิเศษ',
 		siteUrl: 'https://wevisdemo.github.io/e-initiative-template',
 		previewImageUrl: 'https://wevisdemo.github.io/e-initiative-template/og.png',
 	},
 	petition: {
-		endDate: new Date('2030-10-10 GMT+7'),
-		expectedSignatures: 10000,
+		endDate: new Date('2025-06-31 GMT+7'),
+		expectedSignatures: 50000,
 		offline: {
 			formUrl: 'petition-form.pdf',
 			formExampleImageUrl: 'https://placehold.co/280x397?text=example',
@@ -51,11 +51,11 @@ export default {
 			link: 'IBM Plex Sans Thai Looped',
 		},
 		stylesheets: [
-			'https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@100..900&display=swap',
+			'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@100;200;300;400;500;600;700&display=swap',
 		],
 	},
 	sheets: {
-		id: '1PPl4bIKrNC68nc9sWDp7aolnTv0xiHZYQRlsvnRpAHc',
+		id: '1lV3AnEUM1bmTfOFbSn5ukvT2r3XmFrilOS4ewhJtc0Y',
 		enableOfflineSignature: false,
 		enableLocations: true,
 	},

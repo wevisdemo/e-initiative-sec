@@ -1,16 +1,9 @@
 <div id="whyforsign1" class=" w-full">
 	<div class="mx-auto overflow-hidden rounded-lg shadow-lg">
-		<div class="relative">
-			<img
-				src="header.jpg"
-				alt="header"
-				class=" h-[78px] w-full object-cover"
-			/>
-			<div class="absolute inset-0 flex items-center justify-center bg-primary">
-				<h1 class="heading-responsive-01 text-center font-bold text-neutral">
-					สรุปใจความสำคัญของ พรบ.
-				</h1>
-			</div>
+		<div class=" flex flex-col items-center justify-center bg-primary py-5">
+			<h1 class="heading-responsive-01 text-center font-bold text-neutral">
+				สรุปใจความสำคัญของ พรบ.
+			</h1>
 		</div>
 		<div class="bg-white p-6">
 			<div class="space-y-6">
@@ -36,9 +29,15 @@
 								<span>มุ่งส่งเสริมอุตสาหกรรม</span>
 							</div>
 							<div class="body-01 text-gray-700 md:text-base">
-								ร่างพระราชบัญญัติระเบียงเขตเศรษฐกิจพิเศษภาคใต้เป็นกฎหมายที่จะกำหนดให้พื้นที่
-								<br /><b>จังหวัดชุมพร ระนองสุราษฎร์ธานี และนครศรีธรรมราช </b><br
-								/><b>เป็นพื้นที่สำหรับส่งเสริมอุตสาหกรรมเป็นหลัก</b>
+								ร่างพระราชบัญญัติระเบียงเขตเศรษฐกิจพิเศษ<br
+									class="md:hidden"
+								/>ภาคใต้เป็นกฎหมายที่จะกำหนดให้พื้นที่
+								<br class="hidden md:block" /><b
+									>จังหวัด<br class="md:hidden" />ชุมพร ระนองสุราษฎร์ธานี
+									และนครศรีธรรมราช<br class="md:hidden" />
+								</b><br class="hidden md:block" /><b
+									>เป็นพื้นที่สำหรับส่งเสริมอุตสาหกรรมเป็นหลัก</b
+								>
 							</div>
 						</div>
 						<div id="wrapper" class=" mb-5">
@@ -56,19 +55,30 @@
 								>
 									2
 								</span>
-								<span>รวบอำนาจทางกฎหมาย และผูกขาดการตัดสินใจ</span>
+								<span
+									>รวบอำนาจทางกฎหมาย<br class="md:hidden" /> และผูกขาดการตัดสินใจ</span
+								>
 							</div>
 							<div class="body-01 text-gray-700 md:text-base">
-								ด้วยการรวบอำนาจและการตัดสินใจในทางกฎหมายให้อยู่ในมือของคณะรัฐมนตรีชุดเล็ก<br
-								/>
-								ในนาม <b>“คณะกรรมการนโยบายเขตเศรษฐกิจพิเศษภาคใต้”</b>
-								ที่สามารถกำหนดทิศทาง<br />
-								การพัฒนา ออกกฎหมาย ระเบียบ รวมถึงอำนาจในการปรับปรุงกฎหมาย หรือกฎที่เห็นว่าเป็นอุปสรรค<br
-								/>
-								ต่อการดำเนินการของเขตเศรษฐกิจพิเศษ
+								ด้วยการ<b
+									>รวบอำนาจและการตัดสินใจในทางกฎหมาย<br
+										class="md:hidden"
+									/>ให้อยู่ในมือของคณะรัฐมนตรีชุดเล็ก<br
+										class="hidden md:block"
+									/>
+									ในนาม “คณะ<br
+										class="md:hidden"
+									/>กรรมการนโยบายเขตเศรษฐกิจพิเศษภาคใต้”</b
+								><br class="md:hidden" />
+								ที่สามารถกำหนดทิศทาง<br class="hidden md:block" />
+								การพัฒนา ออกกฎหมาย<br class="md:hidden" /> ระเบียบ
+								รวมถึงอำนาจในการปรับปรุงกฎหมาย<br class="md:hidden" />
+								หรือกฎที่เห็นว่าเป็นอุปสรรค<br class="hidden md:block" />
+								ต่อการดำเนินการ<br class="md:hidden" />ของเขตเศรษฐกิจพิเศษ
 								<b
-									>ซึ่งขัดต่อหลักการถ่วงดุลอำนาจ และขัดต่อสิทธิ<br />
-									หลายประการตามที่รัฐธรรมนูญรับรองไว้</b
+									>ซึ่งขัดต่อหลักการถ่วงดุล<br class="md:hidden" />อำนาจ
+									และขัดต่อสิทธิ<br class="hidden md:block" />
+									หลายประการตามที่<br class="md:hidden" />รัฐธรรมนูญรับรองไว้</b
 								>
 							</div>
 						</div>
@@ -87,12 +97,14 @@
 								>
 									3
 								</span>
-								<span>มุ่งส่งเสริมอุตสาหกรรม</span>
+								<span>SEC ทางด่วนของ Land Bridge</span>
 							</div>
 							<div class="body-01 text-start text-gray-700 md:text-base">
-								<p class="mb-2 ml-10">
-									<b>ร่างกฎหมาย SEC</b>
-									เป็นกฎหมายที่เอื้อให้เกิดโครงการแลนด์บริดจ์ชุมพร-ระนอง<br />
+								<p class="mb-2 ml-10 text-center md:text-left">
+									<b
+										>ร่างกฎหมาย SEC
+										เป็นกฎหมายที่เอื้อให้เกิดโครงการแลนด์บริดจ์ชุมพร-ระนอง</b
+									><br />
 									ที่ประกอบด้วย 3 โครงการ คือ
 								</p>
 								<ol class="list-decimal pl-6">

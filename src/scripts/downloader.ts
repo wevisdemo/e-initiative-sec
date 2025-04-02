@@ -27,11 +27,11 @@ if (!existsSync(TEMP_DIR)) mkdirSync(TEMP_DIR);
 do {
 	const documents = await getDocuments(PAGE_LIMIT, lastCitizenId);
 
-	lastCitizenId = documents.at(-1)?.citizenId;
+	// lastCitizenId = documents.at(-1)?.citizenId;
 
-	console.log(
-		`Batch ${batchCount}: ${documents.at(0)?.citizenId} - ${lastCitizenId} (${documents.length}) are retrieved.`,
-	);
+	// console.log(
+	// 	`Batch ${batchCount}: ${documents.at(0)?.citizenId} - ${lastCitizenId} (${documents.length}) are retrieved.`,
+	// );
 
 	writeFileSync(
 		`${TEMP_DIR}/documents-raw-${batchCount}.json`,
@@ -52,38 +52,21 @@ const documents = readdirSync(TEMP_DIR)
 console.log(`Original data has ${documents.length} rows`);
 
 const signatories = documents
-	.filter(
-		(s) =>
-			s.firstname.length > 1 &&
-			s.lastname.length > 1 &&
-			validateCitizenId(s.citizenId),
-	)
+	.filter((s) => s.firstname.length > 1 && s.lastname.length > 1)
 	.sort((z, a) => z.timestamp.seconds - a.timestamp.seconds)
-	.filter(checkDuplicatedKeys(['citizenId', 'firstname', 'lastname']))
+	.filter(checkDuplicatedKeys(['firstname', 'lastname']))
 	.sort((z, a) => a.timestamp.seconds - z.timestamp.seconds)
-	.map(
-		({
-			prefix,
-			firstname,
-			lastname,
-			timestamp,
-			location,
-			citizenId,
-			signature,
-		}) => {
-			return {
-				citizenId,
-				fullname: `${prefix.trim()} ${firstname.trim()} ${lastname.trim()}`,
-				location: location.trim(),
-				date: new Date(timestamp.seconds * 1000),
-				signature,
-			};
-		},
-	);
+	.map(({ prefix, firstname, lastname, timestamp, location }) => {
+		return {
+			fullname: `${prefix.trim()} ${firstname.trim()} ${lastname.trim()}`,
+			location: location.trim(),
+			date: new Date(timestamp.seconds * 1000),
+		};
+	});
 
 writeFileSync(
 	`${OUTPUT_DIR}/signatories.csv`,
-	csvFormat(signatories.map(({ signature, ...rest }) => rest)),
+	csvFormat(signatories.map(({ ...rest }) => rest)),
 );
 
 console.log(`Got ${signatories.length} signatories after cleaning`);
@@ -109,24 +92,20 @@ function checkDuplicatedKeys<T extends Object>(keys: (keyof T)[]) {
 }
 
 function formatSignatoriesWithSignature({
-	citizenId,
 	fullname,
 	location,
 	date,
-	signature,
 }: (typeof signatories)[number]) {
 	const [day, month, year] = date
 		.toLocaleDateString('TH-th', { dateStyle: 'long' })
 		.split(' ');
 
 	return {
-		citizenId,
 		fullname,
 		location,
 		day,
 		month,
 		year,
-		signature,
 	};
 }
 

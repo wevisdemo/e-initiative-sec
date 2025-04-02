@@ -11,7 +11,7 @@ const { id, outerClass, innerClass, hideNavbar } = Astro.props;
 
 <div
 	{id}
-	class={`w-full flex flex-col items-center px-3 py-12 md:py-24 ${outerClass || ''}`}
+	class={`w-full flex flex-col justify-start md:justify-center md:items-center px-3 py-8 md:py-24 ${outerClass || ''}`}
 	data-navbar={hideNavbar ? 'hide' : 'show'}
 >
 	<div class={innerClass}>

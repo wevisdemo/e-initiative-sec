@@ -6,11 +6,11 @@ import WhyForSign03 from './WhyForSign03.svelte';
 ---
 
 <div class="relative">
-	<div class="relative top-[100px]" id="expand01">
+	<div class="relative -top-1" id="volunteer">
 		<img
 			src="cover01.svg"
 			alt="cover01"
-			class="hidden max-h-[504px] w-full border border-white object-cover md:block"
+			class="white hidden max-h-[504px] w-full object-cover md:block"
 		/>
 		<img
 			src="cover01-mb.svg"
@@ -31,7 +31,7 @@ import WhyForSign03 from './WhyForSign03.svelte';
 		</div>
 	</div>
 	<div
-		class="relative z-20 mx-auto mb-10 flex w-full max-w-screen-md flex-col items-center gap-8 px-3 text-center"
+		class="relative -top-[100px] z-20 mx-auto mb-10 flex w-full max-w-screen-md flex-col items-center gap-8 px-3 text-center"
 	>
 		<WhyForSign />
 	</div>
@@ -61,7 +61,7 @@ import WhyForSign03 from './WhyForSign03.svelte';
 		</div>
 	</div>
 	<div
-		class="relative -top-[100px] z-20 mx-auto flex w-full max-w-screen-md flex-col items-center gap-8 px-3 text-center"
+		class="relative -top-[100px] z-20 mx-auto flex w-full max-w-screen-md flex-col items-center gap-4 px-3 text-center"
 	>
 		<WhyForSign02 />
 		<WhyForSign03 />
@@ -69,8 +69,15 @@ import WhyForSign03 from './WhyForSign03.svelte';
 			href="#"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="btn btn-primary btn-block text-base-100"
+			class="heading-03 btn btn-secondary btn-block mt-5 font-bold text-neutral"
 			>อ่านร่าง พรบ. ฉบับเต็ม <DocumentIcon /></a
+		>
+		<a
+			href="#"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="heading-03 btn btn-secondary btn-block font-bold text-neutral"
+			>อ่านผลกระทบ<DocumentIcon /></a
 		>
 	</div>
 </div>

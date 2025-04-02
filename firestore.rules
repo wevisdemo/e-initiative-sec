@@ -4,6 +4,10 @@ service cloud.firestore {
         allow create: if request.auth != null && hasTimestamp() && isCalm(database);
         allow read: if isAdmin();
     }
+     match /organizes/{organize} {
+        allow create: if request.auth != null && hasTimestamp() && isCalm(database);
+        allow read: if isAdmin();
+    }
     match /users/{user} {
         allow create: if isMine() && hasTimestamp();
         allow update: if isMine() && hasTimestamp() && isCalm(database);

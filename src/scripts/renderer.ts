@@ -25,12 +25,12 @@ for (let i = 0; i < sourceFiles.length; i++) {
 
 	console.log(`Filling ${signs.length} signatures...`);
 
-	const pdfBytes = await fill(signs);
+	// const pdfBytes = await fill(signs);
 	const outputFilename = `${OUTPUT_DIR}/${SIGNATURE_OUTPUT_PREFIX}${i + 1}.pdf`;
 
 	console.log(`Writing ${outputFilename}...`);
 
-	writeFileSync(outputFilename, pdfBytes);
+	// writeFileSync(outputFilename, pdfBytes);
 
 	counter += signs.length;
 
@@ -39,34 +39,34 @@ for (let i = 0; i < sourceFiles.length; i++) {
 
 console.log(`Finished. Filled ${counter} signatures to PDFs.`);
 
-export async function fill(signs: SignatoriesWithSignature[]) {
-	const templateDoc = await PDFDocument.load(
-		readFileSync(Config.renderer.templateFile),
-	);
-	const fontBuffer = readFileSync(Config.renderer.fontFile);
+// export async function fill(signs: SignatoriesWithSignature[]) {
+// 	const templateDoc = await PDFDocument.load(
+// 		readFileSync(Config.renderer.templateFile),
+// 	);
+// 	const fontBuffer = readFileSync(Config.renderer.fontFile);
 
-	const targetedDoc = await PDFDocument.create();
+// 	const targetedDoc = await PDFDocument.create();
 
-	targetedDoc.registerFontkit(fontkit);
+// 	targetedDoc.registerFontkit(fontkit);
 
-	const font = await targetedDoc.embedFont(fontBuffer, { subset: true });
+// 	const font = await targetedDoc.embedFont(fontBuffer, { subset: true });
 
-	for (let i = 0; i < signs.length; i++) {
-		if (i !== 0 && i % 100 === 0) {
-			console.log(`--- Filling page number ${i}...`);
-		}
-		try {
-			const [page] = await targetedDoc.copyPages(templateDoc, [0]);
-			await fillPage(signs[i], { page, targetedDoc, font });
-			targetedDoc.addPage(page);
-		} catch (e) {
-			console.error('Error filling', signs[i]);
-			throw e;
-		}
-	}
+// 	for (let i = 0; i < signs.length; i++) {
+// 		if (i !== 0 && i % 100 === 0) {
+// 			console.log(`--- Filling page number ${i}...`);
+// 		}
+// 		try {
+// 			const [page] = await targetedDoc.copyPages(templateDoc, [0]);
+// 			await fillPage(signs[i], { page, targetedDoc, font });
+// 			targetedDoc.addPage(page);
+// 		} catch (e) {
+// 			console.error('Error filling', signs[i]);
+// 			throw e;
+// 		}
+// 	}
 
-	return targetedDoc.save();
-}
+// 	return targetedDoc.save();
+// }
 
 async function fillPage(
 	sign: SignatoriesWithSignature,
@@ -87,19 +87,6 @@ async function fillPage(
 			if (field.type === 'image') {
 				return fillBase64Image(sign[field.key], field);
 			}
-
-			if (field.split) {
-				sign.citizenId.split(field.split.by).forEach((digit, i) => {
-					fillText(digit, {
-						...field,
-						x: field.x + (field.split?.getOffsetX?.(digit, i) || 0),
-						y: field.y + (field.split?.getOffsetY?.(digit, i) || 0),
-					});
-				});
-
-				return;
-			}
-
 			return fillText(sign[field.key], field);
 		}),
 	);
