@@ -3,8 +3,8 @@ export default {
 	metadata: {
 		title: 'E-Initiative Template',
 		description: 'Customizable template for Thailand E-initiative',
-		siteUrl: 'https://wevisdemo.github.io/e-initiative-template',
-		previewImageUrl: 'https://wevisdemo.github.io/e-initiative-template/og.png',
+		siteUrl: 'https://stop-sec.com',
+		previewImageUrl: 'https://stop-sec.com/og.png',
 	},
 	petition: {
 		endDate: new Date('2030-10-10 GMT+7'),
