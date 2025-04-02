@@ -1,19 +1,76 @@
 ---
-import SectionContainer from '../SectionContainer.astro';
 import DocumentIcon from '../icons/DocumentIcon.svelte';
 import WhyForSign from './WhyForSign.svelte';
+import WhyForSign02 from './WhyForSign02.svelte';
+import WhyForSign03 from './WhyForSign03.svelte';
 ---
 
-<SectionContainer
-	innerClass="flex max-w-screen-md flex-col items-center gap-8 text-center"
-	id="whyforsign"
->
-	<WhyForSign/>
-	<a
-		href="#"
-		target="_blank"
-		rel="noopener noreferrer"
-		class="btn btn-primary btn-block text-base-100"
-		>อ่านร่าง พรบ. ฉบับเต็ม <DocumentIcon /></a
+<div class="relative">
+	<div class="relative top-[100px]" id="expand01">
+		<img
+			src="cover01.svg"
+			alt="cover01"
+			class="hidden max-h-[504px] w-full border border-white object-cover md:block"
+		/>
+		<img
+			src="cover01-mb.svg"
+			alt="cover01-mb"
+			class="block max-h-[504px] w-full object-cover md:hidden"
+		/>
+		<div
+			class="absolute inset-0 flex h-auto w-full items-center justify-center"
+		>
+			<div
+				class="relative -top-[15%] z-10 flex flex-col items-center text-center text-white"
+			>
+				<img src="question.svg" alt="question" class="mb-4 w-[80px]" />
+				<h2 class="heading-responsive-03 mb-6 text-2xl font-bold">
+					ทำไมต้องหยุด<br />กฎหมายพิเศษนี้!
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div
+		class="relative z-20 mx-auto mb-10 flex w-full max-w-screen-md flex-col items-center gap-8 px-3 text-center"
 	>
-</SectionContainer>
+		<WhyForSign />
+	</div>
+	<div class="relative" id="expand02">
+		<img
+			src="cover02.svg"
+			alt="cover02"
+			class="hidden max-h-[504px] w-full object-cover md:block"
+		/>
+		<img
+			src="cover02-mb.svg"
+			alt="cover02-mb"
+			class="block max-h-[504px] w-full object-cover md:hidden"
+		/>
+		<div
+			class="absolute inset-0 flex h-auto w-full items-center justify-center"
+		>
+			<div
+				class="relative -top-[15%] z-10 flex flex-col items-center text-center"
+			>
+				<img src="sign.svg" alt="sign" class="mb-4 w-[80px]" />
+				<h2 class="heading-responsive-03 mb-6 text-2xl font-bold">
+					หลักการและ
+					<br />ผลกระทบ
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div
+		class="relative -top-[100px] z-20 mx-auto flex w-full max-w-screen-md flex-col items-center gap-8 px-3 text-center"
+	>
+		<WhyForSign02 />
+		<WhyForSign03 />
+		<a
+			href="#"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="btn btn-primary btn-block text-base-100"
+			>อ่านร่าง พรบ. ฉบับเต็ม <DocumentIcon /></a
+		>
+	</div>
+</div>

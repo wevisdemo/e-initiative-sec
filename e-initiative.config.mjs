@@ -32,8 +32,8 @@ export default {
 		colors: {
 			primary: '#51F4CD',
 			'primary-focus': '#3ADBB4',
-			secondary: '#2BB25C',
-			'secondary-focus': '#35D26E',
+			secondary: '#F6E47F',
+			'secondary-focus': '#E0CD62',
 			accent: '#8054FF',
 			'accent-focus': '#5929E3',
 			neutral: '#000000',
