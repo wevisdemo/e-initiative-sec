@@ -3,8 +3,8 @@ export default {
 	metadata: {
 		title: 'Stop SEC ACT. And Land Bridge',
 		description: 'หยุดกฎหมายพิเศษ เพื่อคนพิเศษ',
-		siteUrl: 'https://wevisdemo.github.io/e-initiative-template',
-		previewImageUrl: 'https://wevisdemo.github.io/e-initiative-template/og.png',
+		siteUrl: 'https://stop-sec.com',
+		previewImageUrl: 'https://stop-sec.com/og.png',
 	},
 	petition: {
 		endDate: new Date('2025-06-31 GMT+7'),
