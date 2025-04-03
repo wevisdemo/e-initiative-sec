@@ -1,13 +1,8 @@
 <script lang="ts">
 	import Config from '../../../e-initiative.config.mjs';
 	import SignOnlineForm from './SignOnlineForm.svelte';
-	import LocationIcon from '../icons/LocationIcon.svelte';
-	import DocumentIcon from '../icons/DocumentIcon.svelte';
 	import SignOnlineFormOrganize from './SignOnlineFormOrganize.svelte';
 	import CardContainer from './CardContainer.svelte';
-	import StepBlock from './StepBlock.svelte';
-	import PostAddress from './PostAddress.svelte';
-	import HeadquarterMap from './HeadquarterMap.svelte';
 
 	enum Channels {
 		Persernal = 'บุคคล',

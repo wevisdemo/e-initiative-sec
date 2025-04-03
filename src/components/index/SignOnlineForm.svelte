@@ -1,20 +1,14 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
 	import { createForm } from 'felte';
 	import { reporter, ValidationMessage } from '@felte/reporter-svelte';
-	import SignaturePad from 'signature_pad';
 	import { Value } from '@sinclair/typebox/value';
 	import PenIcon from '../icons/PenIcon.svelte';
-	import ResetIcon from '../icons/ResetIcon.svelte';
 	import CheckmarkIcon from '../icons/CheckmarkIcon.svelte';
-	import { documentsTable, MAX_LOCATION_LENGTH } from '../../models/document';
+	import { documentsTable } from '../../models/document';
 	import { submitDocument } from '../../utils/firebase';
-	import { validateCitizenId } from '../../utils/validater';
 
 	let successDialog: HTMLDialogElement;
 	let errorDialog: HTMLDialogElement;
-	let canvasResizeObserver: ResizeObserver;
-	let signatureEnabled = false;
 	let isLoading = false;
 
 	const { form, setTouched, setData, data, reset } = createForm({

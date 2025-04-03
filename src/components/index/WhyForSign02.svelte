@@ -14,9 +14,9 @@
 			>
 				<div class="mt-4 w-full md:mt-0">
 					<img
-						src="/expand01.1.svg"
-						alt="expand01.1"
-						class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover"
+						src="/expand02.1.svg"
+						alt="expand02.1"
+						class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover object-[0_80%]"
 					/>
 					<div id="wrapper" class=" mb-5">
 						<div
@@ -43,9 +43,9 @@
 					</div>
 					<div id="wrapper" class=" mb-5">
 						<img
-							src="/expand01.2.svg"
-							alt="expand01.2"
-							class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover object-bottom"
+							src="/expand02.2.svg"
+							alt="expand02.2"
+							class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover object-[0_10%]"
 						/>
 						<div
 							class="heading-03 mb-3 flex items-center justify-center font-semibold text-gray-900"
@@ -72,11 +72,15 @@
 						</div>
 					</div>
 					<div id="wrapper" class=" mb-5">
-						<img
-							src="/expand01.3.svg"
-							alt="expand01.3"
-							class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover"
-						/>
+						<div
+							class="mx-auto mb-2 h-[120px] max-w-[450px] overflow-hidden rounded-full"
+						>
+							<img
+								src="/expand02.3.svg"
+								alt="expand02.3"
+								class=" h-[120px] w-full scale-125 object-cover object-[0_55%]"
+							/>
+						</div>
 						<div
 							class="heading-03 mb-3 flex items-center justify-center font-semibold text-gray-900"
 						>
@@ -101,9 +105,9 @@
 					</div>
 					<div id="wrapper" class=" mb-5">
 						<img
-							src="/expand01.4.svg"
-							alt="expand01.4"
-							class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover"
+							src="/expand02.4.svg"
+							alt="expand02.4"
+							class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover object-[0_55%]"
 						/>
 						<div
 							class="heading-03 mb-3 flex items-center justify-center font-semibold text-gray-900"
@@ -128,9 +132,9 @@
 					</div>
 					<div id="wrapper" class=" mb-5">
 						<img
-							src="/expand01.4.svg"
-							alt="expand01.4"
-							class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover"
+							src="/expand02.5.svg"
+							alt="expand02.5"
+							class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover object-[0_65%]"
 						/>
 						<div
 							class="heading-03 mb-3 flex items-center justify-center font-semibold text-gray-900"

@@ -14,7 +14,7 @@
 						<img
 							src="/expand01.1.svg"
 							alt="expand01.1"
-							class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover"
+							class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover object-[0_80%]"
 						/>
 						<div id="wrapper" class=" mb-5">
 							<div
@@ -44,7 +44,7 @@
 							<img
 								src="/expand01.2.svg"
 								alt="expand01.2"
-								class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover object-bottom"
+								class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover object-bottom"
 							/>
 							<div
 								class="heading-03 mb-3 flex items-center justify-center font-semibold text-gray-900"
@@ -86,7 +86,7 @@
 							<img
 								src="/expand01.3.svg"
 								alt="expand01.3"
-								class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover"
+								class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover"
 							/>
 							<div
 								class="heading-03 mb-3 flex items-center justify-center font-semibold text-gray-900"
@@ -137,7 +137,7 @@
 							<img
 								src="/expand01.4.svg"
 								alt="expand01.4"
-								class="mx-auto mb-2 h-[120px] w-full rounded-full object-cover"
+								class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover"
 							/>
 							<div
 								class="heading-03 mb-3 flex items-center justify-center font-semibold text-gray-900"
