@@ -22,13 +22,13 @@
 							>
 								<span
 									id="index"
-									class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+									class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 								>
 									1
 								</span>
 								<span>มุ่งส่งเสริมอุตสาหกรรม</span>
 							</div>
-							<div class="body-01 text-gray-700 md:text-base">
+							<div class="body text-gray-700 md:text-base">
 								ร่างพระราชบัญญัติระเบียงเขตเศรษฐกิจพิเศษ<br
 									class="md:hidden"
 								/>ภาคใต้เป็นกฎหมายที่จะกำหนดให้พื้นที่
@@ -51,7 +51,7 @@
 							>
 								<span
 									id="index"
-									class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+									class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 								>
 									2
 								</span>
@@ -59,7 +59,7 @@
 									>รวบอำนาจทางกฎหมาย<br class="md:hidden" /> และผูกขาดการตัดสินใจ</span
 								>
 							</div>
-							<div class="body-01 text-gray-700 md:text-base">
+							<div class="body text-gray-700 md:text-base">
 								ด้วยการ<b
 									>รวบอำนาจและการตัดสินใจในทางกฎหมาย<br
 										class="md:hidden"
@@ -93,13 +93,13 @@
 							>
 								<span
 									id="index"
-									class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+									class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 								>
 									3
 								</span>
 								<span>SEC ทางด่วนของ Land Bridge</span>
 							</div>
-							<div class="body-01 text-start text-gray-700 md:text-base">
+							<div class="body text-start text-gray-700 md:text-base">
 								<p class="mb-2 ml-10 text-center md:text-left">
 									<b
 										>ร่างกฎหมาย SEC
@@ -109,18 +109,26 @@
 								</p>
 								<ol class="list-decimal pl-6">
 									<li>
-										โครงการพัฒนาท่าเรือน้ำลึกแหลมริ่ว จ.ชุมพร
+										โครงการพัฒนาท่าเรือน้ำลึกแหลมริ่ว จ.ชุมพร<br
+											class="md:hidden"
+										/>
 										และโครงการท่าเรือน้ำลึกอ่าวอ่าง จ.ระนอง
 									</li>
 									<li>โครงการรถไฟรางคู่</li>
 									<li>
-										ทางหลวงพิเศษระหว่างเมือง (Motorway) ช่วงท่าเรือชุมพร -
-										ท่าเรือระนอง เพื่อรองรับ<br />
-										การคมนาคมขนส่งเชื่อมสองฝั่งทะเล และเป็นไปเพื่อกิจการภายในเขตเศรษฐกิจพิเศษ<br
-										/>
-										ซึ่งมีนักวิชาการหลายท่านตั้งข้อสังเกตต่อความไม่คุ้มค่า ไม่คุ้มทุนในทางเศรษฐกิจ<br
-										/>
-										และความเสียหายทางสิ่งแวดล้อมที่จะเกิดขึ้น และไม่เป็นไปตามความต้องการของคนในพื้นที่
+										ทางหลวงพิเศษระหว่างเมือง (Motorway)<br class="md:hidden" />
+										ช่วงท่าเรือชุมพร - ท่าเรือระนอง เพื่อรองรับ<br />
+										การคมนาคมขนส่งเชื่อมสองฝั่งทะเล และ<br
+											class="md:hidden"
+										/>เป็นไปเพื่อกิจการภายในเขตเศรษฐกิจพิเศษ<br />
+										ซึ่งมีนักวิชาการหลายท่านตั้งข้อสังเกตต่อ<br
+											class="md:hidden"
+										/>ความไม่คุ้มค่า ไม่คุ้มทุนในทางเศรษฐกิจ<br />
+										และความเสียหายทางสิ่งแวดล้อมที่จะ<br
+											class="md:hidden"
+										/>เกิดขึ้น และไม่เป็นไปตามความต้องการ<br
+											class="md:hidden"
+										/>ของคนในพื้นที่
 									</li>
 								</ol>
 							</div>
@@ -136,25 +144,47 @@
 							>
 								<span
 									id="index"
-									class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+									class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 								>
 									4
 								</span>
 								<span>แย่งยึดทรัพยากรและวีถีชีวิต</span>
 							</div>
-							<div class="body-01 text-gray-700 md:text-base">
-								ด้วยการ<b
-									>รวบอำนาจและการตัดสินใจในทางกฎหมายให้อยู่ในมือของคณะรัฐมนตรีชุดเล็ก</b
-								><br />
-								ในนาม “คณะกรรมการนโยบายเขตเศรษฐกิจพิเศษภาคใต้” ที่สามารถกำหนดทิศทาง<br
+							<div class="body text-gray-700 md:text-base">
+								ทรัพยากรธรรมชาติสิ่งแวดล้อมในพื้นที่ทะเล<br
+									class=" md:hidden"
 								/>
-								การพัฒนา ออกกฎหมาย ระเบียบ รวมถึงอำนาจในการปรับปรุงกฎหมาย หรือกฎที่เห็นว่าเป็นอุปสรรค<br
+								โดยเฉพาะพื้นที่จังหวัดระนอง “ขุมทองอันดามัน”<br />
+								เป็นแหล่งที่อยู่อาศัยและหล่อเลี้ยงชีวิตของสัตว์<br
+									class=" md:hidden"
 								/>
-								ต่อการดำเนินการของเขตเศรษฐกิจพิเศษ
-								<b
-									>ซึ่งขัดต่อหลักการถ่วงดุลอำนาจ และขัดต่อสิทธิ<br
-									/>หลายประการตามที่รัฐธรรมนูญรับรองไว้
-								</b>
+								และคนในพื้นที่ ทั้งยังสร้างรายได้มหาศาล<br
+									class=" hidden md:block"
+								/>ทั้งจาก<br
+									class=" md:hidden"
+								/>การท่องเที่ยวและการทำประมงให้แก่ผู้คนจำนวนมาก<br
+									class=" md:hidden"
+								/>
+								แต่<b
+									>การเกิดขึ้นของกฎหมาย SEC<br class=" hidden md:block" />
+									ที่ต้องการเปลี่ยน<br
+										class=" md:hidden"
+									/>ภาคใต้เป็นเป็นอุตสาหกรรม ที่จะเอื้อประโยชน์<br
+										class=" md:hidden"
+									/>ให้กับคนบางกลุ่ม และ<br class=" hidden md:block" />
+									ต้องทำลายทรัพยากร<br
+										class=" md:hidden"
+									/>ธรรมชาติจำนวนมากที่ยากต่อการฟื้นฟูเยียวยา<br
+										class=" md:hidden"
+									/>
+									กฎหมายฉบับนี้จึงเป็น<br
+										class=" hidden md:block"
+									/>การแย่งยึดพื้นที่และอาจ<br
+										class=" md:hidden"
+									/>นำไปสู่หายนะของสิ่งแวดล้อมและวิถีชีวิตดั้งเดิม<br
+										class=" md:hidden"
+									/>ของคนในพื้นที่</b
+								>
 							</div>
 						</div>
 					</div>

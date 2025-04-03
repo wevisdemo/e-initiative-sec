@@ -3,7 +3,9 @@
 		<div class=" flex flex-col items-center justify-center bg-secondary py-5">
 			<p>หลักการสำคัญของ</p>
 			<h1 class="heading-responsive-01 text-center font-bold text-neutral">
-				พรบ.ระเบียงเขตเศรษฐกิจ<br />พิเศษภาคใต้ หรือ ร่าง พรบ. SEC
+				พรบ.ระเบียงเขต<br class=" md:hidden" />เศรษฐกิจ<br
+					class=" hidden md:block"
+				/>พิเศษภาคใต้<br class=" md:hidden" /> หรือ ร่าง พรบ. SEC
 			</h1>
 		</div>
 		<div class="space-y-6 bg-white p-6">
@@ -22,15 +24,21 @@
 						>
 							<span
 								id="index"
-								class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+								class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 							>
 								1
 							</span>
-							<span>มีเป้าหมายให้ภาคใต้กลายเป็นแหล่งอุตสาหกรรม </span>
+							<span class=" text-left md:text-center"
+								>มีเป้าหมายให้ภาคใต้กลายเป็น<br
+									class=" md:hidden"
+								/>แหล่งอุตสาหกรรม
+							</span>
 						</div>
-						<div class="body-01 text-gray-700 md:text-base">
+						<div class="body text-gray-700 md:text-base">
 							ซึ่งมี 4 จังหวัดนำร่อง คือ ชุมพร ระนอง สุราษฎร์ธานี <br />
-							และนครศรีธรรมราช (อีก 10 จังหวัดจะถูกประกาศเพิ่มเติมภายหลัง)
+							และนครศรีธรรมราช (อีก 10 จังหวัดจะถูกประกาศ<br
+								class=" md:hidden"
+							/>เพิ่มเติมภายหลัง)
 						</div>
 					</div>
 					<div id="wrapper" class=" mb-5">
@@ -44,17 +52,21 @@
 						>
 							<span
 								id="index"
-								class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+								class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 							>
 								2
 							</span>
 							<span>สร้างอำนาจพิเศษ</span>
 						</div>
-						<div class="body-01 text-gray-700 md:text-base">
-							โดยการจัดตั้งให้มี “คณะกรรมการและเลขาธิการ SEC” <br />
+						<div class="body text-gray-700 md:text-base">
+							โดยการจัดตั้งให้มี “คณะกรรมการและเลขาธิการ<br
+								class=" md:hidden"
+							/>
+							SEC” <br class=" hidden md:block" />
 							เป็นผู้มีอำนาจในการตัดสินใจ
 							<b
-								>เพื่อเปลี่ยน แก้ไข ยกเลิกกฏหมาย <br />
+								>เพื่อเปลี่ยน<br class=" md:hidden" /> แก้ไข ยกเลิกกฏหมาย
+								<br class=" hidden md:block" />
 								แทนที่หน่วยงานปกติ</b
 							>
 						</div>
@@ -70,16 +82,21 @@
 						>
 							<span
 								id="index"
-								class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+								class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 							>
 								3
 							</span>
 							<span>เปลี่ยนผังเมือง </span>
 						</div>
-						<div class="body-01 text-gray-700 md:text-base">
-							จากผังเมืองแบบการเกษตรกรรมที่สอดคล้องกับระบบนิเวศ วิถีชีวิตชุมชน <br
-							/>
-							<b>จะถูกเปลี่ยนให้กลายเป็นผังเมืองเพื่อการทำอุตสาหกรรม </b>
+						<div class="body text-gray-700 md:text-base">
+							จากผังเมืองแบบการเกษตรกรรมที่สอดคล้องกับ<br
+								class=" md:hidden"
+							/>ระบบนิเวศ วิถีชีวิตชุมชน <br class=" hidden md:block" />
+							<b
+								>จะถูกเปลี่ยนให้กลายเป็น<br
+									class=" md:hidden"
+								/>ผังเมืองเพื่อการทำอุตสาหกรรม
+							</b>
 						</div>
 					</div>
 					<div id="wrapper" class=" mb-5">
@@ -93,16 +110,18 @@
 						>
 							<span
 								id="index"
-								class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+								class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 							>
 								4
 							</span>
 							<span>เอื้อนายทุน</span>
 						</div>
-						<div class="body-01 text-gray-700 md:text-base">
-							กฏหมายใดที่มีอยู่เป็นอุปสรรคต่อการลงทุน<br />
+						<div class="body text-gray-700 md:text-base">
+							กฏหมายใดที่มีอยู่เป็นอุปสรรคต่อการ<br
+								class=" md:hidden"
+							/>ลงทุน<br class=" hidden md:block" />
 							<b
-								>คณะกรรมการและเลขาธิการ SEC จะเสนอต่อ ครม.
+								>คณะกรรมการและเลขาธิการ SEC จะเสนอต่อ<br class=" md:hidden" /> ครม.
 								ให้แก้ไขกฎหมายได้ทุกฉบับ</b
 							>
 						</div>
@@ -118,16 +137,19 @@
 						>
 							<span
 								id="index"
-								class="body-01 mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
+								class="body mr-2 flex h-[30px] w-[30px] items-center justify-center rounded-full bg-black text-white"
 							>
 								5
 							</span>
 							<span>กระทบฐานทรัพยากรธรรมชาติ</span>
 						</div>
-						<div class="body-01 text-gray-700 md:text-base">
-							จะถูกนำมาใช้ในการขับเคลื่อนแหล่งอุตสาหกรรมอย่างมหาศาล กระทบต่อ<br
-							/>
-							ระบบนิเวศ ความมั่นคงทางอาหาร แหล่งท่องเที่ยวเชิงนิเวศ วิถีชีวิตชุมชน
+						<div class="body text-gray-700 md:text-base">
+							จะถูกนำมาใช้ในการขับเคลื่อน<br
+								class=" md:hidden"
+							/>แหล่งอุตสาหกรรมอย่างมหาศาล กระทบต่อ<br />
+							ระบบนิเวศ ความมั่นคงทางอาหาร แหล่งท่องเที่ยว<br
+								class=" md:hidden"
+							/>เชิงนิเวศ วิถีชีวิตชุมชน
 						</div>
 					</div>
 				</div>

@@ -25,7 +25,9 @@ const { totalLocations, locationByProvinces } = await getLocations();
 		<BackHomeLink class="absolute left-1 top-3" />
 
 		<h1 class="heading-responsive-02 text-center leading-none">
-			มีจุดตั้งโต๊ะทั้งหมด {totalLocations} จุด ใน {locationByProvinces.length}
+			มีกิจกรรม<br class="md:hidden" /> ทั้งหมด {totalLocations} จุด<br
+				class="md:hidden"
+			/> ใน {locationByProvinces.length}
 			จังหวัด
 		</h1>
 		<UpdateTimestamp class="text-center" />

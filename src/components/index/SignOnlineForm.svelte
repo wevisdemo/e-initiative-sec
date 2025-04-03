@@ -19,20 +19,25 @@
 
 	const { form, setTouched, setData, data, reset } = createForm({
 		validate: (values) => {
-			const errors = Object.fromEntries(
-				[...Value.Errors(documentsTable, values)].map((e) => [
-					e.path.replace('/', ''),
-					e.message,
-				]),
-			);
+			const errors: Record<string, string> = {};
+			if (!values.location) {
+				errors.location = 'ระบุจังหวัดที่คุณอยู่อาศัย  ';
+			}
+
+			if (!/^[ก-๙\s]+$/.test(values.firstname)) {
+				errors.firstname = 'ระบุชื่อจริงเป็นภาษาไทย  ';
+			}
+
+			if (!/^[ก-๙\s]+$/.test(values.lastname)) {
+				errors.lastname = 'ระบุนามสกุลเป็นภาษาไทย';
+			}
+
 			return errors;
 		},
 		async onSubmit(values) {
 			isLoading = true;
 			try {
 				if (!Value.Check(documentsTable, values)) {
-					console.log(documentsTable, values, 'throw');
-
 					throw [...Value.Errors(documentsTable, values)];
 				}
 				await submitDocument(values);
@@ -56,7 +61,9 @@
 			</label>
 			<select
 				name="location"
-				class="select w-full rounded-md bg-base-200"
+				class="select w-full rounded-md bg-base-200 {messages
+					? 'input-error'
+					: ''}"
 				disabled={isLoading}
 			>
 				<option value="" selected disabled>เลือกจังหวัด</option>
@@ -138,7 +145,9 @@
 				<option>อุบลราชธานี</option>
 			</select>
 			<div class="label">
-				<span class="body-01">ระบุจังหวัดที่คุณอยู่อาศัย</span>
+				<span class="body-01 {messages ? 'text-error' : ''}"
+					>ระบุจังหวัดที่คุณอยู่อาศัย</span
+				>
 			</div>
 		</ValidationMessage>
 	</div>

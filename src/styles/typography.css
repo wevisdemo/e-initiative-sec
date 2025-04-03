@@ -9,6 +9,9 @@
 .body-03 {
 	@apply font-body text-[16px] leading-[160%];
 }
+.body {
+	@apply font-body text-[12px] leading-[160%] md:text-[14px];
+}
 
 .heading-01 {
 	@apply font-heading-fixed text-[12px] font-bold leading-[160%];

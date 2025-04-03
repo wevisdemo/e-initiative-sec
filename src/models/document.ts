@@ -20,10 +20,7 @@ export const documentsTable = Object({
 });
 
 export const organizeTable = Object({
-	organizeName: Column(
-		'location',
-		asString({ minLength: 1, maxLength: MAX_LOCATION_LENGTH }),
-	),
+	organizeName: Column('location', asString({ minLength: 1 })),
 });
 
 export type FormDocument = StaticDecode<typeof documentsTable>;
