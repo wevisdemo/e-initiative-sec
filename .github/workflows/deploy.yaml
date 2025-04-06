@@ -7,8 +7,8 @@ on:
       - '**/README.md'
       - '**/*.d.ts'
       - 'src/scripts/**'
-  # schedule:
-  #   - cron: "0 0 * * *" # Trigger every 00:00 GMT
+  schedule:
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 permissions:
