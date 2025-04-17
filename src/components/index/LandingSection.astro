@@ -18,20 +18,20 @@ const userCount =
 <div class="relative h-full w-full">
 	<img
 		class="absolute inset-0 hidden h-full w-full object-cover md:block"
-		src="landing-bg.svg"
-		alt="landing-bg"
+		src="landing-bg.webp"
+		alt=""
 	/>
 	<img
 		class="absolute inset-0 block h-full w-full scale-[1.01] object-cover md:hidden"
-		src="landing-mb.svg"
-		alt="landing-mb"
+		src="landing-mb.webp"
+		alt=""
 	/>
 	<SectionContainer
 		outerClass="relative min-h-screen "
-		innerClass="flex flex-col gap-16  text-center md:flex-row"
+		innerClass="flex flex-col items-center gap-16 text-center md:flex-row"
 		hideNavbar
 	>
-		<img class="mt-4 h-[287px]" src="landing-logo.svg" alt="landing-logo" />
+		<img class="mt-4 h-[287px] w-auto" src="landing-logo.webp" alt="" />
 		<div class="my-auto flex w-full max-w-md flex-col space-y-2">
 			{
 				isCampaignEnded && (

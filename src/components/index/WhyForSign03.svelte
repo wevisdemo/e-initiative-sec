@@ -24,7 +24,7 @@
 					>
 				</p>
 				<img
-					src="/expand03.svg"
+					src="/expand03.webp"
 					alt="expand03"
 					class="mx-auto mb-2 w-full max-w-[450px] object-cover"
 				/>

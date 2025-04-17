@@ -12,7 +12,7 @@
 				>
 					<div class="mt-4 w-full md:mt-0">
 						<img
-							src="/expand01.1.svg"
+							src="/expand01.1.webp"
 							alt="expand01.1"
 							class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover object-[0_80%]"
 						/>
@@ -42,7 +42,7 @@
 						</div>
 						<div id="wrapper" class=" mb-5">
 							<img
-								src="/expand01.2.svg"
+								src="/expand01.2.webp"
 								alt="expand01.2"
 								class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover object-bottom"
 							/>
@@ -84,7 +84,7 @@
 						</div>
 						<div id="wrapper" class=" mb-5">
 							<img
-								src="/expand01.3.svg"
+								src="/expand01.3.webp"
 								alt="expand01.3"
 								class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover"
 							/>
@@ -135,7 +135,7 @@
 						</div>
 						<div id="wrapper" class=" mb-5">
 							<img
-								src="/expand01.4.svg"
+								src="/expand01.4.webp"
 								alt="expand01.4"
 								class="mx-auto mb-2 h-[120px] w-full max-w-[450px] rounded-full object-cover"
 							/>
