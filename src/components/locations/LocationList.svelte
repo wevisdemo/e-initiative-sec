@@ -43,19 +43,36 @@
 					<span class="body-02">({locations.length} จุด)</span>
 				</h2>
 				<ul class="collapse-content space-y-6 px-0">
-					{#each locations as { name, openingTime, phone, address, mapUrl }}
+					{#each locations as { name, description, openingTime, contact, address, mapUrl }}
 						<li class="body-01 grid gap-y-2 border-t border-base-300 pt-3">
 							<h3 class="heading-03">{name}</h3>
+							{#if description}
+								<p>{description}</p>
+							{/if}
 							{#if openingTime}
 								<div>
 									<h4 class="heading-01 text-xs">วันและเวลาที่เปิด</h4>
 									<p>{openingTime}</p>
 								</div>
 							{/if}
-							{#if phone}
+							{#if contact}
 								<div>
 									<h4 class="heading-01 text-xs">ติดต่อ</h4>
-									<p>{phone}</p>
+									<p>
+										{#each contact.split(' ') as chunk}
+											{#if chunk.startsWith('https://') || chunk.startsWith('http://')}
+												<a
+													href="chunk"
+													target="_blank"
+													rel="noopener noreferrer"
+													class="link-01 text-accent underline">{chunk}</a
+												>
+											{:else}
+												{chunk}
+											{/if}
+											{' '}
+										{/each}
+									</p>
 								</div>
 							{/if}
 							{#if address || mapUrl}
