@@ -11,8 +11,8 @@ import {
 } from '../../utils/firebase';
 import Sharer from '../Sharer.svelte';
 
-const userCount =
-	(await countSubmittedUsers()) + (await countSubmittedOrganize());
+const submittedUsers = await countSubmittedUsers();
+const submittedOrganize = await countSubmittedOrganize();
 ---
 
 <div class="relative h-full w-full">
@@ -53,10 +53,12 @@ const userCount =
 						class="heading-responsive-03 text-shadow-md font-bold text-red-600"
 						style="  -webkit-text-stroke: 8px white; paint-order: stroke fill;"
 					>
-						ลงแล้ว {userCount.toLocaleString()} ชื่อ
+						ลงแล้ว {(submittedUsers + submittedOrganize).toLocaleString()} ชื่อ
 					</p>
 					<p class="body-03 font-bold text-white md:text-neutral">
-						บุคคล {countSubmittedUsers()} คน / องค์กร {countSubmittedOrganize()}
+						บุคคล {submittedUsers.toLocaleString()} คน / องค์กร {
+							submittedOrganize.toLocaleString()
+						}
 						องค์กร
 					</p>
 					<p class="body-03">
