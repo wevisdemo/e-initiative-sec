@@ -8,7 +8,7 @@ on:
       - '**/*.d.ts'
       - 'src/scripts/**'
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 17 * * *"
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - name: Install dependencies
-        run: npm i
+        run: npm ci --ignore-scripts
       - name: Build with Astro
         run: npm run build
         env:
