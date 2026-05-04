@@ -93,6 +93,7 @@
 				<option>ประจวบคีรีขันธ์</option>
 				<option>ปราจีนบุรี</option>
 				<option>ปัตตานี</option>
+				<option>พะเยา</option>
 				<option>พระนครศรีอยุธยา</option>
 				<option>พังงา</option>
 				<option>พัทลุง</option>
