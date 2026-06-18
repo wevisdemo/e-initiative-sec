@@ -11,6 +11,7 @@
 		"emulator:save": "firebase emulators:export ./mocks/firebase/",
 		"download:local": "NODE_ENV=development node --env-file=.env.development --import tsx ./src/scripts/downloader.ts",
 		"download:prod": "node --env-file=.env.production --import tsx ./src/scripts/downloader.ts",
+		"summarize": "node --import tsx ./src/scripts/summarize.ts",
 		"render": "node --import tsx ./src/scripts/renderer.ts",
 		"render:watch": "node --watch --import tsx ./src/scripts/renderer.ts",
 		"format": "prettier --write --ignore-unknown .",

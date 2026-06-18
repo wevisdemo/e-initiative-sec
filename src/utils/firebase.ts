@@ -21,6 +21,7 @@ import {
 	orderBy,
 	limit,
 	startAfter,
+	Timestamp,
 } from 'firebase/firestore';
 import FirebaseOptions from '../../firebase.json';
 import {
@@ -143,7 +144,7 @@ export const countSubmittedOrganize = async (): Promise<number> => {
 
 export async function getDocuments(
 	pageLimit: number,
-	lastCitizenId?: string,
+	lastTimestamp?: Timestamp,
 ): Promise<SubmittedDocument[]> {
 	const documents: SubmittedDocument[] = [];
 
@@ -152,9 +153,9 @@ export async function getDocuments(
 	const res = await getDocs(
 		query(
 			collection(firestore, COLLECTION.Documents),
-			orderBy('citizenId'),
+			orderBy('timestamp'),
 			limit(pageLimit),
-			...(lastCitizenId ? [startAfter(lastCitizenId)] : []),
+			...(lastTimestamp ? [startAfter(lastTimestamp)] : []),
 		),
 	);
 
@@ -163,12 +164,45 @@ export async function getDocuments(
 	return documents;
 }
 
-function signInAsAdmin() {
-	return signInWithEmailAndPassword(
-		auth,
-		getEnv('ADMIN_EMAIL'),
-		getEnv('ADMIN_PASSWORD'),
+export async function getOrganizes(
+	pageLimit: number,
+	lastOrganizeName?: string,
+): Promise<SubmittedOrganize[]> {
+	const organizes: SubmittedOrganize[] = [];
+
+	await signInAsAdmin();
+
+	const res = await getDocs(
+		query(
+			collection(firestore, COLLECTION.Organize),
+			orderBy('organizeName'),
+			limit(pageLimit),
+			...(lastOrganizeName ? [startAfter(lastOrganizeName)] : []),
+		),
 	);
+
+	res.forEach((doc) => organizes.push(doc.data() as SubmittedOrganize));
+
+	return organizes;
+}
+
+let adminSignInPromise: Promise<void> | null = null;
+
+function signInAsAdmin() {
+	if (!adminSignInPromise) {
+		adminSignInPromise = signInWithEmailAndPassword(
+			auth,
+			getEnv('ADMIN_EMAIL'),
+			getEnv('ADMIN_PASSWORD'),
+		).then(
+			() => undefined,
+			(error) => {
+				adminSignInPromise = null;
+				throw error;
+			},
+		);
+	}
+	return adminSignInPromise;
 }
 
 function getEnv(key: string) {

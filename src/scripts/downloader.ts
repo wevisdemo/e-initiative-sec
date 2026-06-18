@@ -5,33 +5,36 @@ import {
 	mkdirSync,
 	existsSync,
 } from 'fs';
-import { getDocuments } from '../utils/firebase';
-import type { SubmittedDocument } from '../models/document';
-import { validateCitizenId } from '../utils/validater';
+import { Timestamp } from 'firebase/firestore';
+import { getDocuments, getOrganizes } from '../utils/firebase';
+import type { SubmittedDocument, SubmittedOrganize } from '../models/document';
 import { csvFormat } from 'd3-dsv';
-import { OUTPUT_DIR, SIGNATURE_OUTPUT_PREFIX } from './constants';
+import { OUTPUT_DIR } from './constants';
 
 const TEMP_DIR = `${OUTPUT_DIR}/.tmp`;
 const PAGE_LIMIT = 1000;
-const WITH_SIGNATURE_MAX_ROW = 10000;
 
-let lastCitizenId: string | undefined;
+let lastTimestamp: Timestamp | undefined;
+let lastOrganizeName: string | undefined;
 let batchCount = 1;
 let isCompleted = false;
-
-console.log('Retrieving documents...');
 
 if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR);
 if (!existsSync(TEMP_DIR)) mkdirSync(TEMP_DIR);
 
+console.log('Retrieving documents...');
+
 do {
-	const documents = await getDocuments(PAGE_LIMIT, lastCitizenId);
+	const documents = await getDocuments(PAGE_LIMIT, lastTimestamp);
 
-	// lastCitizenId = documents.at(-1)?.citizenId;
+	lastTimestamp = documents.at(-1)?.timestamp as Timestamp | undefined;
 
-	// console.log(
-	// 	`Batch ${batchCount}: ${documents.at(0)?.citizenId} - ${lastCitizenId} (${documents.length}) are retrieved.`,
-	// );
+	console.log(
+		`Batch ${batchCount}: ${documents.length} documents retrieved`,
+		lastTimestamp
+			? `(last timestamp: ${lastTimestamp.toDate().toISOString()})`
+			: '',
+	);
 
 	writeFileSync(
 		`${TEMP_DIR}/documents-raw-${batchCount}.json`,
@@ -42,8 +45,11 @@ do {
 	isCompleted = documents.length < PAGE_LIMIT;
 } while (!isCompleted);
 
+batchCount = 1;
+isCompleted = false;
+
 const documents = readdirSync(TEMP_DIR)
-	.filter((path) => path.endsWith('.json'))
+	.filter((path) => path.startsWith('documents-raw-') && path.endsWith('.json'))
 	.reduce<SubmittedDocument[]>((list, path) => {
 		list.push(...JSON.parse(readFileSync(`${TEMP_DIR}/${path}`, 'utf-8')));
 		return list;
@@ -51,10 +57,10 @@ const documents = readdirSync(TEMP_DIR)
 
 console.log(`Original data has ${documents.length} rows`);
 
-const signatories = documents
+const people = documents
 	.filter((s) => s.firstname.length > 1 && s.lastname.length > 1)
 	.sort((z, a) => z.timestamp.seconds - a.timestamp.seconds)
-	.filter(checkDuplicatedKeys(['firstname', 'lastname']))
+	.filter(checkDuplicatedKeys(['firstname', 'lastname', 'prefix', 'location']))
 	.sort((z, a) => a.timestamp.seconds - z.timestamp.seconds)
 	.map(({ prefix, firstname, lastname, timestamp, location }) => {
 		return {
@@ -64,23 +70,56 @@ const signatories = documents
 		};
 	});
 
-writeFileSync(
-	`${OUTPUT_DIR}/signatories.csv`,
-	csvFormat(signatories.map(({ ...rest }) => rest)),
-);
+console.log(`Got ${people.length} people after cleaning`);
 
-console.log(`Got ${signatories.length} signatories after cleaning`);
+writeFileSync(`${OUTPUT_DIR}/people.csv`, csvFormat(people));
 
-for (let i = 0; i * WITH_SIGNATURE_MAX_ROW < signatories.length; i++) {
-	writeFileSync(
-		`${OUTPUT_DIR}/${SIGNATURE_OUTPUT_PREFIX}${i + 1}.csv`,
-		csvFormat(
-			signatories
-				.slice(i * WITH_SIGNATURE_MAX_ROW, (i + 1) * WITH_SIGNATURE_MAX_ROW)
-				.map(formatSignatoriesWithSignature),
-		),
+console.log('Retrieving organizes...');
+
+do {
+	const organizes = await getOrganizes(PAGE_LIMIT, lastOrganizeName);
+
+	lastOrganizeName = organizes.at(-1)?.organizeName;
+
+	console.log(
+		`Batch ${batchCount}: ${organizes.length} organizations retrieved`,
+		lastOrganizeName ? `(last name: ${lastOrganizeName})` : '',
 	);
-}
+
+	writeFileSync(
+		`${TEMP_DIR}/organizes-raw-${batchCount}.json`,
+		JSON.stringify(organizes),
+	);
+
+	batchCount++;
+	isCompleted = organizes.length < PAGE_LIMIT;
+} while (!isCompleted);
+
+const organizes = readdirSync(TEMP_DIR)
+	.filter((path) => path.startsWith('organizes-raw-') && path.endsWith('.json'))
+	.reduce<OrganizeRecord[]>((list, path) => {
+		list.push(...JSON.parse(readFileSync(`${TEMP_DIR}/${path}`, 'utf-8')));
+		return list;
+	}, []);
+
+console.log(`Original organize data has ${organizes.length} rows`);
+
+const organizationRows = organizes
+	.filter((o) => o.organizeName.length > 1)
+	.sort((z, a) => z.timestamp.seconds - a.timestamp.seconds)
+	.filter(checkDuplicatedKeys(['organizeName']))
+	.map(({ organizeName, timestamp, ...rest }) => {
+		return {
+			name: organizeName.trim(),
+			email: (rest as { mail?: string }).mail?.trim() ?? '',
+			phone: (rest as { phoneNo?: string }).phoneNo?.trim() ?? '',
+			date: new Date(timestamp.seconds * 1000),
+		};
+	});
+
+console.log(`Got ${organizationRows.length} organizations after cleaning`);
+
+writeFileSync(`${OUTPUT_DIR}/organizations.csv`, csvFormat(organizationRows));
 
 console.log(`Write CSV files into ${OUTPUT_DIR} successfully!`);
 
@@ -95,7 +134,7 @@ function formatSignatoriesWithSignature({
 	fullname,
 	location,
 	date,
-}: (typeof signatories)[number]) {
+}: (typeof people)[number]) {
 	const [day, month, year] = date
 		.toLocaleDateString('TH-th', { dateStyle: 'long' })
 		.split(' ');
@@ -107,6 +146,11 @@ function formatSignatoriesWithSignature({
 		month,
 		year,
 	};
+}
+
+interface OrganizeRecord extends SubmittedOrganize {
+	mail?: string;
+	phoneNo?: string;
 }
 
 export type SignatoriesWithSignature = ReturnType<
