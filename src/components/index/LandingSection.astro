@@ -33,15 +33,6 @@ const submittedOrganize = await countSubmittedOrganize();
 	>
 		<img class="mt-4 h-[287px] w-auto" src="landing-logo.webp" alt="" />
 		<div class="my-auto flex w-full max-w-md flex-col space-y-2">
-			{
-				isCampaignEnded && (
-					<div class="flex flex-row items-center gap-2">
-						<div class="h-[2px] flex-1 bg-white" />
-						<p class="body-03 font-bold text-white">⚠️ ปิดรับลงชื่อแล้ว ⚠️</p>
-						<div class="h-[2px] flex-1 bg-white" />
-					</div>
-				)
-			}
 			<p class="body-03 mt-1 text-white md:text-neutral">
 				ต้องการ {Config.petition.expectedSignatures.toLocaleString()} รายชื่อ
 			</p>
@@ -61,27 +52,36 @@ const submittedOrganize = await countSubmittedOrganize();
 						}
 						องค์กร
 					</p>
-					<p class="body-03">
-						ภายใน {
-							Config.petition.endDate.toLocaleDateString('TH-th', {
-								dateStyle: 'long',
-							})
-						}
-					</p>
+					{
+						!isCampaignEnded && (
+							<p class="body-03">
+								ภายใน{' '}
+								{Config.petition.endDate.toLocaleDateString('TH-th', {
+									dateStyle: 'long',
+								})}
+							</p>
+						)
+					}
 				</div>
 				<UpdateTimestamp client:load date={new Date()} />
 				{
-					(
+					isCampaignEnded ? (
+						<div class="flex flex-row items-center gap-2 bg-black px-2 py-1 md:bg-transparent">
+							<div class="h-[2px] flex-1 bg-white md:bg-black" />
+							<p class="body-03 font-bold text-white md:text-black">
+								⚠️ ปิดรับลงชื่อแล้ว ⚠️
+							</p>
+							<div class="h-[2px] flex-1 bg-white md:bg-black" />
+						</div>
+					) : (
 						<div class="space-y-2">
-							{!isCampaignEnded && (
-								<a
-									href="#sign"
-									class="heading-03 btn btn-primary  btn-block  text-neutral"
-								>
-									ลงชื่อเลย
-									<PenIcon />
-								</a>
-							)}
+							<a
+								href="#sign"
+								class="heading-03 btn btn-primary  btn-block  text-neutral"
+							>
+								ลงชื่อเลย
+								<PenIcon />
+							</a>
 
 							{Config.sheets?.enableLocations && (
 								<a

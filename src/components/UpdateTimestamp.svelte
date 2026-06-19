@@ -18,7 +18,7 @@
 </script>
 
 <p
-	class="body-01 text-white opacity-50 md:text-neutral {updatedText
+	class="body-01 text-white opacity-90 md:text-neutral md:opacity-50 {updatedText
 		? 'block'
 		: 'invisible'} {$$restProps.class}"
 >

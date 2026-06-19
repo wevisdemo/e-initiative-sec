@@ -7,7 +7,7 @@ export default {
 		previewImageUrl: 'https://stop-sec.com/og.png',
 	},
 	petition: {
-		endDate: new Date('2026-06-30 23:59:59 GMT+7'),
+		endDate: new Date('2026-06-18 23:59:59 GMT+7'),
 		expectedSignatures: 50000,
 		offline: {
 			formUrl: 'petition-form.pdf',
